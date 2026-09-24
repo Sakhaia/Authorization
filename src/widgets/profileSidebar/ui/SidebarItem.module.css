@@ -1,0 +1,66 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.item:hover {
+    background-color: var(--backgroundGray2);
+}
+
+.active {
+    background-color: var(--backgroundGray2);
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.active .iconDefault {
+    display: none;
+}
+
+.iconActive {
+    display: none;
+}
+
+.active .iconActive {
+    display: block;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--textColorGray2);
+}
+
+.active .label {
+    color: var(--brand);
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.activeBtn {
+    background-color: var(--backgroundGray2);
+}

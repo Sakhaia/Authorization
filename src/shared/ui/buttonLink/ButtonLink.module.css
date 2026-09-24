@@ -1,0 +1,11 @@
+.link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  color: var(--brand);
+}
+
+.link:hover {
+  color: var(--textColorBlack);
+}

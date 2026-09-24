@@ -1,0 +1,49 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--textColorBlack);
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.inputWrapper:hover {
+    border: 1px solid var(--brand);
+}
+
+.errorInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--textColorRed);
+}
+
+.input {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 127%;
+    color: var(--textColorBlack2);
+    width: 100%;
+}
+
+.error {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: var(--textColorRed);
+}

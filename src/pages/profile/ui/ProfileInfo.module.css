@@ -1,0 +1,70 @@
+.info {
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+}
+
+.avatarBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.avatar {
+  width: 170px;
+  height: 188px;
+  border-radius: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.username {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  color: var(--textColorBlack3);
+}
+
+.nameBadge {
+  background-color: var(--green);
+  padding: 3px 8px;
+  border-radius: 30px;
+}
+
+.badge {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  color: var(--green2);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.age {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  color: var(--textColorBlack3);
+}
+
+.address {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: var(--textColorGray3);
+}

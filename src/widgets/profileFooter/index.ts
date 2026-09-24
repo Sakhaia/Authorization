@@ -1,0 +1,1 @@
+export {ProfileFooter} from './ui/ProfileFooter'

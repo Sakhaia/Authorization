@@ -1,0 +1,19 @@
+.agreements {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hint {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: var(--textColorGray5);
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

@@ -1,0 +1,10 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.board {
+    border-bottom: 0.5px solid #D1D1D1;
+}
+

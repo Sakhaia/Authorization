@@ -1,0 +1,54 @@
+.header {
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.collapseHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 27.5px;
+    border-bottom: 1px solid var(--border);
+    gap: 8px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6.3px;
+}
+
+.logoImg {
+    width: 33px;
+    height: 33px;
+}
+
+.collapseLogoText {
+    display: none;
+}
+
+.logoText {
+    padding: 6px 3px;
+}
+
+.collapseBtn {
+    box-sizing: border-box;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+}
+
+.collapseImg {
+    width: 20px;
+    height: 20px;
+}
+
+.collapseRotate {
+    transform: rotate(180deg);
+}

@@ -1,0 +1,69 @@
+.footer {
+    background-color: var(--footer);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 112px 22px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.logo {
+    width: 94.42px;
+    height: 19.25px;
+}
+
+.slogan {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 127%;
+    letter-spacing: 0%;
+    color: var(--white);
+    padding-top: 20px;
+}
+
+.description {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 127%;
+    letter-spacing: 0%;
+    color: var(--textColorGray);
+    padding-top: 16px;
+    padding-bottom: 35px;
+}
+
+.side {
+    border-top: 1px solid var(--border2);
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 19px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 127%;
+    letter-spacing: 0%;
+    color: var(--textColorGray);
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 8px;
+}

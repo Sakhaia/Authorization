@@ -1,0 +1,17 @@
+.layout {
+  max-width: 1440px;
+  margin: 0 auto; /* цинтрируем */
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh; /* по высоте экрана */
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background);
+  margin-top: 140px;
+  margin-bottom: 70px;
+}

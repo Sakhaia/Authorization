@@ -1,0 +1,80 @@
+.sidebar {
+  width: 42%; /* 607 / 1440 */
+  padding: 70px 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--brand);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.logoCircle {
+  width: 45px;
+  height: 45px;
+  background-color: var(--white);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoText {
+  width: 132px;
+  height: 27px;
+}
+
+.brand span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 127%;
+  color: var(--white);
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.benefits h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  color: var(--white);
+}
+
+.benefits ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.benefits li {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 127%;
+  color: var(--white);
+}
+
+.checkIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}

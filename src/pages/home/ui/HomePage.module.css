@@ -1,0 +1,28 @@
+.home {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.home h1 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    color: var(--textColorBlack4);
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info span {
+font-weight: 500;
+font-size: 16px;
+line-height: 140%;
+text-align: center;
+color: var(--textColorGray4);
+}
