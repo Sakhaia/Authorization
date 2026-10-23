@@ -1,0 +1,96 @@
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+    width: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 246px;
+    flex-shrink: 0;
+}
+
+.info h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.selectSkills {
+    width: 408px;
+}
+
+.selectedSkills {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    border: 1px solid var(--brand);
+    border-radius: 12px;
+    padding: 11px 12px;
+    display: flex;
+    gap: 16px;
+}
+
+.content {
+    display: flex;
+    gap: 8px;
+}
+
+.content img {
+    width: 20px;
+    height: 20px;
+}
+
+.content span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.removeBtn {
+    border: 1px solid var(--red);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: var(--red);
+}
+
+.submitBtn {
+    align-self: flex-end;
+    width: auto;
+    padding: 15px 44px;
+}

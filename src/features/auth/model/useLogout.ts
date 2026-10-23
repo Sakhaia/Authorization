@@ -16,8 +16,9 @@ export const useLogout = () => {
             console.log(err)
         } finally {
             removeAccessToken(); /* удаляем токен */
-            dispatch(baseApi.util.resetApiState()); /* сброс кеша RTK Query */
             navigate('/login', {replace: true}); /* редирект, replace: true - кнопка назад не вернет на профиль */
+            dispatch(baseApi.util.resetApiState()); /* сброс кеша RTK Query */
+            
         }
     }
   return {handleLogout}

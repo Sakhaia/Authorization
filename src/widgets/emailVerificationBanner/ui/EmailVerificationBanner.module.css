@@ -1,0 +1,40 @@
+.banner {
+    flex-direction: column;
+    gap: 16px;   
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--textColorBlack4);
+}
+
+.text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    clear: var(--black600);
+}
+
+.verifyBtn {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    gap: 8px;
+    width: auto;
+    background-color: transparent;
+    color: var(--brand);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 110.00000000000001%;
+}
+
+.verifyBtn:hover {
+    transform: scale(95%);
+}

@@ -16,14 +16,15 @@ export const ProfileInfo = () => {
         <div className={styles.block}>
           <h1 className={styles.username}>{user?.username}</h1>
           <div className={styles.nameBadge}>
-            <span className={styles.badge}>
-              {ROLE_NAMES[user?.userRoles[0].name ?? ""] ??
-                user?.userRoles[0]?.name}
-            </span>
+            {user?.userRoles?.[0] && (
+              <span className={styles.badge}>
+                {ROLE_NAMES[user.userRoles[0].name] ?? user.userRoles[0].name}
+              </span>
+            )}
           </div>
         </div>
         <div className={styles.group}>
-          <span className={styles.age}>{getAge(user?.birthday)} лет</span>
+          {user?.birthday && (<span className={styles.age}>{getAge(user.birthday)} лет</span>)}
           <span className={styles.address}>
             {user?.city}, {user?.country}
           </span>

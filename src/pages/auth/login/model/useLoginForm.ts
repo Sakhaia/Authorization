@@ -21,12 +21,11 @@ export const useLoginForm = () => {
 
     const onSubmit = async (data: LoginFormValues) => {
         try {
-            const response = await login({ // login - функция из useLoginMutation
+            await login({ // login - функция из useLoginMutation
                 username: data.username,
                 password: data.password,
             }).unwrap()
             navigate('/profile');
-            console.log('Успешный вход:', response)
         } catch (err) {
             console.error('Ошибка входа:', err);
         }

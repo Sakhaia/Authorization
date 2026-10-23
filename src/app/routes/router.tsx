@@ -1,25 +1,32 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, ForgotPasswordPage, LoginPage, RegisterPage,} from "@/pages/auth";
-import { ProfilePage } from "@/pages/profile";
+import { AboutTab, EditProfilePage, PersonalTab, ProfilePage, SkillsTab } from "@/pages/profile";
 import { HomePage } from "@/pages/home";
-import { ProtectedRoute } from "./ProtectedRoute";
 import { AppLayout } from "../layouts";
+import { AuthCheck } from "./AuthCheck";
+import { GuestOnly } from "./GuestOnly";
 
 export const router = createBrowserRouter([
   {
-    element: <AuthLayout />,
+    element:  <AuthLayout />,
     children: [
-      { path: "login", element: <ProtectedRoute mode="onlyGuests"><LoginPage /></ProtectedRoute>  },
-      { path: "register", element: <ProtectedRoute mode="onlyGuests"><RegisterPage /></ProtectedRoute>  },
-      { path: "forgot-password", element: <ProtectedRoute mode="onlyGuests"><ForgotPasswordPage /></ProtectedRoute>  },
+      { path: "login", element: <GuestOnly><LoginPage /></GuestOnly>  },
+      { path: "register", element: <GuestOnly><RegisterPage /></GuestOnly>  },
+      { path: "forgot-password", element: <GuestOnly><ForgotPasswordPage /></GuestOnly>  },
     ],
   },
 
   {
-    element: <AppLayout />, children: [
-      { index: true, element: ( <ProtectedRoute mode="onlyAuthenticated"> <HomePage /> </ProtectedRoute> )},
-      { path: "home", element: <Navigate to="/" replace/>},
-      { path: "profile", element: ( <ProtectedRoute mode="onlyAuthenticated"> <ProfilePage /> </ProtectedRoute> )},
+    element: <AuthCheck><AppLayout /></AuthCheck> , children: [
+      { index: true, element: <HomePage /> },
+      { path: "home", element: <Navigate to="/" replace/> },
+      { path: "profile", element: <ProfilePage /> },
+      { path: "profile/edit", element: <EditProfilePage />, children: [
+        { path: "personal", element: <PersonalTab/> },
+        { path: "about", element: <AboutTab/> },
+        { path: "skills", element: <SkillsTab/> }
+      ]},
+      
     ],
   },
 ])

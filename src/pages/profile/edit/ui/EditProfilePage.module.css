@@ -1,0 +1,47 @@
+.edit {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    max-width: 1120px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--textColorBlack4);
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.item {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 110.00000000000001%;
+    color: var(--textColorGray3);
+}
+.item:hover {
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--brand);
+}
+
+.itemActive {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 110.00000000000001%;
+    color: var(--textColorBlack3);
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--brand);
+}

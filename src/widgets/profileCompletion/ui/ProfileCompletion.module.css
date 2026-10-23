@@ -1,0 +1,31 @@
+.completion {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title {
+    font-weight: 600;
+    color: var(--textColorBlack4);
+}
+
+.text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    clear: var(--black600);
+}
+
+.fillBtn {
+    display: flex;
+    align-self: flex-end;
+    padding: 15px 41.5px;
+    border-radius: 12px;
+    background-color: var(--brand);
+    color: var(--white);
+}

@@ -6,7 +6,7 @@ export type Permissions = {
 export type UserRoles = {
     id: number;
     name: string; 
-    permission: Permissions[];
+    permissions: Permissions[];
 }
 
 export type Subscription = {
@@ -31,7 +31,7 @@ export type CreatedBy = {
     username: string;
 }
 
-export type Specializations = {
+export type Specialization = {
     id: number,
     title: string,
     slug: string,
@@ -42,18 +42,18 @@ export type Specializations = {
     createdBy: CreatedBy;
 }
 
-export type ProfileSkills = {
+export type ProfileSkill = {
     id: number;
     title: string;
     description: string;
     imageSrc: string,
     createdAt: string;
     updatedAt: string;
-    specializations: Specializations[];
+    specializations: Specialization[];
     createdBy: CreatedBy;
 }
 
-export type Profiles = {
+export type Profile = {
     userId: string;
     id: string;
     profileType: number;
@@ -63,7 +63,7 @@ export type Profiles = {
     image_src: string;
     isActive: boolean;
     ratingPoints: number;
-    profileSkills: ProfileSkills[];
+    profileSkills: ProfileSkill[];
 }
 
 export type ProfileResponse = {
@@ -83,5 +83,67 @@ export type ProfileResponse = {
     isEmailNotificationsEnable: boolean;
     telegramUsername: string;
     subscriptions: Subscriptions[];
-    profiles: Profiles[];
+    profiles: Profile[];
+}
+
+export type UpdateUserRequest = {
+    username?: string;
+    phone?: string;
+    country?: string;
+    city?: string;
+    birthday?: string;
+    address?: string;
+    avatarUrl?: string;
+    avatarImage?: string;
+}
+
+export type SocialNetwork = {
+    code: string;
+    title: string;
+}
+
+export type UpdateProfileRequest = {
+    userId?: string;
+    description?: string;
+    socialNetwork?: SocialNetwork[];
+    profileSkills?: number[];
+}
+
+export type UserResponse = {
+    id: string;
+    username: string;
+    email: string;
+    phone: string;
+    country: string;
+    city: string;
+    birthday: string;
+    address: string;
+    avatarUrl: string;
+    updatedAt: string;
+    createdAt: string;
+    userRoles: UserRoles[];
+    isVerified: boolean;
+    isEmailNotificationsEnable: boolean;
+}
+
+export type SpecializationResponse = {
+    total: number;
+    page: number;
+    limit: number;
+    data: Specialization[];
+}
+
+export type Skill = {
+    id: number;
+    title: string;
+    description: string;
+    imageSrc: string;
+    specializations: Specialization[];
+}
+
+export type SkillsResponse = {
+    total: number;
+    page: number;
+    limit: number;
+    data: Skill[];
 }

@@ -1,3 +1,10 @@
-export { sessionApi, useGetProfileQuery } from "./api/sessionApi";
+export { 
+    sessionApi, 
+    useGetProfileQuery, 
+    useUpdateUserMutation, 
+    useUpdateProfileMutation, 
+    useGetSpecializationsQuery, 
+    useGetSkillsQuery,
+} from "./api/sessionApi";
 
-export type { ProfileResponse } from "./model/types";
+export type { ProfileResponse, UpdateUserRequest, UpdateProfileRequest, UserResponse, } from "./model/types";

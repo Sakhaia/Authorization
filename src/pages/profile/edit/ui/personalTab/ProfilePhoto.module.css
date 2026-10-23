@@ -1,0 +1,102 @@
+.photo {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    box-shadow: none;
+    gap: 120px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 246px;
+    gap: 6px;
+}
+
+.info h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 668px;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+}
+
+.preview img {
+    max-width: 160px;
+    height: 160px;
+}
+
+.deletePhoto {
+    color: var(--red);
+}
+
+.deletePhoto:hover {
+    color: var(--textColorBlack3);
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 474px;
+    max-height: 188px;
+    border: 2px dashed var(--purple400);
+    padding: 50.5px 35px;
+    border-radius: 20px;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.dropzoneActive {
+    background-color: rgba(106, 11, 255, 0.08);
+    border-color: var(--brand, --border3);
+}
+
+.dropzone img {
+    width: 32px;
+    height: 32px;
+}
+
+.dropzone h4 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--textColorGray3);
+}
+
+.change {
+    color: var(--brand);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+}
+
+.dropzone p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--black300);
+}

@@ -1,0 +1,39 @@
+.pers {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 120px;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 246px;
+    gap: 6px;
+}
+
+.info h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.fields {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    height: 280px; 
+    gap: 24px;
+    width: 664px;
+}

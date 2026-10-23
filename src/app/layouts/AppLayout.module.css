@@ -29,6 +29,7 @@
 .main {
   grid-area: main;
   background-color: var(--backgroundGray2);
+  padding: 24px 20px;
 }
 
 .footer {

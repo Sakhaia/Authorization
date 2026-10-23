@@ -1,1 +1,5 @@
 export {ProfilePage} from './ui/ProfilePage'
+export {EditProfilePage} from './edit/ui/EditProfilePage'
+export {PersonalTab} from './edit/ui/personalTab/PersonalTab'
+export {AboutTab} from './edit/ui/aboutTab/AboutTab'
+export {SkillsTab} from './edit/ui/skillsTab/SkillsTab'

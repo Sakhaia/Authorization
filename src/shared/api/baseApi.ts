@@ -1,44 +1,91 @@
-import { createApi, fetchBaseQuery, type BaseQueryFn } from "@reduxjs/toolkit/query/react";
-import { getAccessToken, removeAccessToken, setAccessToken } from "../lib";
-import type { FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import {
+    createApi,
+    fetchBaseQuery,
+    type BaseQueryFn,
+} from '@reduxjs/toolkit/query/react';
+import type { FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { getAccessToken, removeAccessToken, setAccessToken } from '@/shared/lib';
+
+let refreshPromise: Promise<{ access_token: string } | null> | null = null;
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
-        credentials: 'include', // прикладывает cookies
-        prepareHeaders: (headers) => { // фун выз перед запросом, с заголовком хедерс
-            const accessToken = getAccessToken(); // читаем
+    credentials: 'include',
+    prepareHeaders: (headers) => {
+        const accessToken = getAccessToken();
 
-            if (accessToken) { // если есть токен в куки 
-                headers.set('Authorization', `Bearer ${accessToken}`) // добавляем зоголовок
-            }
-
-            return headers;
+        if (accessToken) {
+            headers.set('Authorization', `Bearer ${accessToken}`);
         }
-})
 
-const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
-    let result = await baseQuery(args, api, extraOptions); /* Исходный запрос */
-    /* Если 401 и если это не рефреш - пробуем обновить токен */
-    const isRefreshRequest = typeof args === 'string' ? args.includes('auth/refresh') : args.url.includes('auth/refresh');
+        return headers;
+    },
+});
 
-    if (result.error?.status === 401 && !isRefreshRequest) {
-        const refreshResult = await baseQuery('auth/refresh', api, extraOptions);
+const PUBLIC_URLS = [
+    'auth/login',
+    'auth/signUp',
+    'auth/send-reset-password',
+];
 
-        if (refreshResult.data) {
-            const newToken = (refreshResult.data as {access_token: string}).access_token;
-            setAccessToken(newToken); /* сохр новый токен */
+const baseQueryWithReauth: BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+    let result = await baseQuery(args, api, extraOptions);
 
-            result = await baseQuery(args, api, extraOptions); /* проверяем исходный запрос */
-        } else { /* рефреш упал - логаут */
+    const url = typeof args === 'string' ? args : args.url;
+    const isRefreshRequest = url.includes('auth/refresh');
+    const isPublicRequest = PUBLIC_URLS.some((publicUrl) =>
+        url.includes(publicUrl)
+    );
+
+    if (result.error?.status === 401 && !isRefreshRequest && !isPublicRequest) {
+        if (!refreshPromise) {
+            refreshPromise = (async () => {
+                try {
+                    const refreshResult = await baseQuery(
+                        'auth/refresh',
+                        api,
+                        extraOptions
+                    );
+
+                    if (refreshResult.data) {
+                        const data = refreshResult.data as {
+                            access_token?: unknown;
+                        };
+
+                        if (typeof data.access_token !== 'string') {
+                            return null;
+                        }
+
+                        setAccessToken(data.access_token);
+                        return { access_token: data.access_token };
+                    }
+
+                    return null;
+                } finally {
+                    refreshPromise = null;
+                }
+            })();
+        }
+
+        const refreshData = await refreshPromise;
+
+        if (refreshData) {
+            result = await baseQuery(args, api, extraOptions);
+        } else {
             removeAccessToken();
-            api.dispatch(baseApi.util.resetApiState())
         }
     }
+
     return result;
-}
+};
 
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReauth,
-    endpoints: () => ({})
-})
+    tagTypes: ['Profile'],
+    endpoints: () => ({}),
+});

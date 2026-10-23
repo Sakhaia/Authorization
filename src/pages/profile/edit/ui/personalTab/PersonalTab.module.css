@@ -1,0 +1,22 @@
+.personal {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.further {
+    display: flex;
+    align-self: flex-end;
+    width: auto;
+    gap: 8px;
+    padding: 15px 44px;
+    background-color: var(--brand);
+    color: var(--white);
+    border-radius: 12px;
+}
+
+.further:hover {
+    color: var(--white);
+    transform: scale(98%);
+    background-color: var(--textColorPurple);
+}
