@@ -6,3 +6,5 @@ export {
 } from './cookie';
 
 export {getAge} from './getAge'
+export {startSession, endSession} from './session'
+export {getPages} from './getPages'

@@ -1,0 +1,25 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 1120px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--textColorBlack4);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}

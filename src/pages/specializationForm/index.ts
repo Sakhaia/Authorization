@@ -1,0 +1,1 @@
+export {SpecializationFormPage} from './ui/SpecializationFormPage'

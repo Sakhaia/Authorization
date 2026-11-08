@@ -23,7 +23,7 @@ export const LoginPage = () => {
             label='Электронная почта'
             placeholder='Введите электронную почту'
             error={errors.username?.message}
-            {...register('username')}/>
+            {...register('username', {required: 'Введите логин'})}/>
 
             <Input
             id='password'
@@ -32,7 +32,7 @@ export const LoginPage = () => {
             placeholder='Введите пароль'
             rightSlot = {true}
             error={errors.password?.message}
-            {...register('password')}/>
+            {...register('password', {required: 'Введите пароль'})}/>
         </div>
 
         <ButtonLink

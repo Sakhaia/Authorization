@@ -64,6 +64,9 @@ const baseQueryWithReauth: BaseQueryFn<
                         return { access_token: data.access_token };
                     }
 
+                    if (refreshResult.error?.status === 401 || refreshResult.error?.status === 403)
+                        removeAccessToken();
+
                     return null;
                 } finally {
                     refreshPromise = null;
@@ -75,8 +78,6 @@ const baseQueryWithReauth: BaseQueryFn<
 
         if (refreshData) {
             result = await baseQuery(args, api, extraOptions);
-        } else {
-            removeAccessToken();
         }
     }
 
@@ -86,6 +87,6 @@ const baseQueryWithReauth: BaseQueryFn<
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Profile'],
+    tagTypes: ['Profile', 'Specializations'],
     endpoints: () => ({}),
 });

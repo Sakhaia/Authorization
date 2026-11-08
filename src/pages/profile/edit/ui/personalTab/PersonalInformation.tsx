@@ -8,7 +8,7 @@ import type { EditProfileFormValues } from '../../model/types'
 
 export const PersonalInformation = () => {
     const {register, formState: {errors}} = useFormContext<EditProfileFormValues>();
-    const {data: specializations, isLoading} = useGetSpecializationsQuery()
+    const {data: specializations, isLoading} = useGetSpecializationsQuery({ limit: 100 })
     const options = specializations?.data.map((spec) => ({
         value: spec.id,
         label: spec.title,

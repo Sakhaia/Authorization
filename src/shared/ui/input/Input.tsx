@@ -5,7 +5,7 @@ import eyeNA from '../../assets/EyeClose.svg';
 import eyeA from '../../assets/EyeSlash.svg';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   error?: string;
   rightSlot?: boolean;
 }

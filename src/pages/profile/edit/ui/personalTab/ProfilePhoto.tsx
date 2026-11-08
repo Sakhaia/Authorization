@@ -7,6 +7,7 @@ import { useProfilePhoto } from "../../model/useProfilePhoto";
 export const ProfilePhoto = () => {
   const {
     field,
+    avatarUrl,
     handleDelete,
     isDragging,
     handleDropzoneClick,
@@ -16,6 +17,10 @@ export const ProfilePhoto = () => {
     handleDragEnter,
     handleDragLeave,
   } = useProfilePhoto();
+
+  const imageSrc = typeof field.value === 'string' ? field.value : field.value === null ? preview : (avatarUrl || preview)
+
+  const hasPhoto = typeof field.value === 'string' || (field.value === undefined && Boolean(avatarUrl));
 
   return (
     <Card className={styles.photo}>
@@ -28,19 +33,22 @@ export const ProfilePhoto = () => {
       </div>
       <div className={styles.group}>
         <div className={styles.preview}>
-          <img src={field.value ?? preview} />
-          <button
+          <img src={imageSrc} />
+          {hasPhoto && (
+            <button
             type="button"
             onClick={handleDelete}
             className={styles.deletePhoto}
           >
             Удалить фото
-          </button>
+          </button>)}
         </div>
         <div
           className={`${styles.dropzone} ${isDragging ? styles.dropzoneActive : ""}`}
           onClick={handleDropzoneClick}
           onDragOver={(e) => e.preventDefault()}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
           onDrop={handleDrop}
         >
           <img src={load} />
@@ -54,8 +62,6 @@ export const ProfilePhoto = () => {
             type="file"
             accept="image/jpeg, image/png, image/jpg"
             onChange={handleFileChange}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
             hidden
           />
         </div>

@@ -1,11 +1,13 @@
-import { useGetProfileQuery } from "@/entities";
 import styles from "./ProfileSkills.module.css";
 import { Card } from "@/shared/ui/card";
+import type { Profile, } from "@/entities/model/types";
 
-export const ProfileSkills = () => {
-  const { data: user } = useGetProfileQuery();
-  const activeProfile = user?.profiles?.find((p) => p.isActive);
-  const skills = activeProfile?.profileSkills ?? [];
+type ProfileSkillProps = {
+  profile?: Profile
+}
+
+export const ProfileSkills = ({profile}: ProfileSkillProps) => {
+  const skills = profile?.profileSkills ?? [];
   return (
     <Card className={styles.skills}>
       <h2>Навыки</h2>

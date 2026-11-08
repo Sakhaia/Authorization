@@ -1,7 +1,5 @@
-export type SocialNetwork = {
-    code: string;
-    title: string;
-}
+import type { SocialNetwork } from "@/entities";
+
 
 export type EditProfileFormValues = {
     username: string;

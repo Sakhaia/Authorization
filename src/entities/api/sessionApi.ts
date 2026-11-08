@@ -1,5 +1,5 @@
 import { baseApi } from "@/shared/api/baseApi";
-import type { ProfileResponse, SkillsResponse, SpecializationResponse, UpdateProfileRequest, UpdateUserRequest, UserResponse } from "../model/types";
+import type { ProfileResponse, SkillsResponse,UpdateProfileRequest, UpdateUserRequest, UserResponse } from "../model/types";
 
 export const sessionApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -10,7 +10,7 @@ export const sessionApi = baseApi.injectEndpoints({
     updateUser: build.mutation<UserResponse, {id: string; data: UpdateUserRequest}>({ // что возвр сервер, что принимает
       query: ({id, data}) => ({
         url: `users/${id}`,
-        method: 'PATCH',
+        method: 'PATCH', // частичное обновление
         body: data,
       }),
       invalidatesTags: ['Profile'], //инвалидирует тег
@@ -23,19 +23,13 @@ export const sessionApi = baseApi.injectEndpoints({
       } ),
       invalidatesTags: ['Profile']
     }),
-    getSpecializations: build.query<SpecializationResponse, void>({
-      query: () => ({
-        url: "specializations",
-        params: {limit: 100}
-      })
-    }),
-    getSkills: build.query<SkillsResponse, {specializations: number[]}>({
-      query: ({specializations}) => ({
+    getSkills: build.query<SkillsResponse, {specializations: number[], limit: number}>({
+      query: ({specializations, limit}) => ({
         url: "skills",
-        params: {specializations: specializations.join(',')}
+        params: {specializations: specializations && specializations.length > 0 ? specializations.join(',') : undefined, limit}
       })
     })
   }),
 })
 
-export const { useGetProfileQuery, useUpdateUserMutation, useUpdateProfileMutation, useGetSpecializationsQuery, useGetSkillsQuery } = sessionApi;
+export const { useGetProfileQuery, useUpdateUserMutation, useUpdateProfileMutation, useGetSkillsQuery } = sessionApi;

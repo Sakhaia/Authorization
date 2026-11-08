@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
-import { useController } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import type { EditProfileFormValues } from "./types";
 import { processFile } from "@/shared/helpers/processFile";
 
 export const useProfilePhoto = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const {watch} = useFormContext<EditProfileFormValues>();
+  const avatarUrl = watch('avatarUrl')
   const { field } = useController<EditProfileFormValues, "image">({
     name: "image",
   });
@@ -27,7 +29,7 @@ export const useProfilePhoto = () => {
   };
 
   const handleDelete = () => {
-    field.onChange(null);
+    field.onChange(null); // явное удаление
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -53,6 +55,7 @@ export const useProfilePhoto = () => {
   };
   return {
     field,
+    avatarUrl,
     handleDelete,
     isDragging,
     handleDropzoneClick,

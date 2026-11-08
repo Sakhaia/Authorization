@@ -1,0 +1,18 @@
+.pagination {
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.active {
+    background-color: var(--brand);
+    color: var(--white);
+    padding: 3px 6px;
+    border-radius: 2px;
+}
+
+.arrLRight {
+    transform: rotate(180deg);
+}

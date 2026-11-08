@@ -5,15 +5,17 @@ import { EmailVerificationBanner } from "@/widgets/emailVerificationBanner";
 
 export const HomePage = () => {
   const { data: user } = useGetProfileQuery();
-  const isProfileComplete = user ? calculateProfileComplete(user) === 100 : false;
-  const isEmailVerified = user?.isVerified ?? false;
+  if (!user) return null;
+
+  const isProfileComplete = calculateProfileComplete(user) === 100;
+  const isEmailVerified = user.isVerified ;
 
   return (
     <div className={styles.home}>
       <h1>Привет, {user?.username}!</h1>
-      {user && !isProfileComplete && <ProfileCompletion user={user}/>}
-      {user && isProfileComplete && !isEmailVerified && <EmailVerificationBanner user={user}/>}
-      {user && isProfileComplete && isEmailVerified && (
+      {!isProfileComplete && <ProfileCompletion user={user}/>}
+      {!isEmailVerified && <EmailVerificationBanner user={user}/>}
+      {isProfileComplete && isEmailVerified && (
         <div className={styles.info}>
           <span>
             Скоро здесь будут отображаться мероприятия сообщества,

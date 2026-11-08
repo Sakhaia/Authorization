@@ -7,7 +7,7 @@ type SelectOption = {
 }
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-    label: string;
+    label?: string;
     error?: string;
     options: SelectOption[];
     placeholder?: string;

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '@/shared/ui/button'
 
 export const PersonalTab = () => {
-  const {trigger} = useFormContext();
+  const {trigger, formState: {isSubmitting}} = useFormContext();
   const navigate = useNavigate();
   const handdleNext = async () => {
     const isValid = await trigger(['username', 'specializationId'])
@@ -26,7 +26,8 @@ export const PersonalTab = () => {
         text='Далее'
         onClick={handdleNext}
         img={arrow}
-        className={styles.further}/>
+        className={styles.further}
+        disabled={isSubmitting}/>
     </div>
   )
 }

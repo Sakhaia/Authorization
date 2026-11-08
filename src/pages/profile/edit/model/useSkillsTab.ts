@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import type { EditProfileFormValues } from "./types";
 import { useGetSkillsQuery } from "@/entities";
+import { useEffect, useRef } from "react";
 
 
 export const useSkillsTab = () => {
@@ -11,6 +12,7 @@ export const useSkillsTab = () => {
       } = useFormContext<EditProfileFormValues>();
       const specializationId = watch("specializationId");
       const selectedSkills = watch("profileSkills") || [];
+      const prevSpecalzatonId = useRef(specializationId); // храним предыдущую спец, чтобы понять, изменилась ли
       const { data: skills, isLoading } = useGetSkillsQuery(
         { specializations: specializationId ? [specializationId] : [] },
         { skip: !specializationId },
@@ -20,6 +22,15 @@ export const useSkillsTab = () => {
           value: skill.id,
           label: skill.title,
         })) ?? [];
+
+        useEffect(() => {
+          if (prevSpecalzatonId.current !== specializationId) { // если спец изменилась
+            setValue("profileSkills", [], {shouldDirty: true, shouldValidate: true}); // то очищаем выбранные навыки
+
+            prevSpecalzatonId.current = specializationId;
+          }
+        }, [specializationId, setValue])
+
       const handleRemoveSkill = (id: number) => {
         setValue(
           "profileSkills",

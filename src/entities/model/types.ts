@@ -94,7 +94,7 @@ export type UpdateUserRequest = {
     birthday?: string;
     address?: string;
     avatarUrl?: string;
-    avatarImage?: string;
+    avatarImage?: string | null;
 }
 
 export type SocialNetwork = {
@@ -146,4 +146,11 @@ export type SkillsResponse = {
     page: number;
     limit: number;
     data: Skill[];
+}
+
+export type UpdateSpecializationRequest = {
+    title: string;
+    description: string;
+    imageSrc?: string;
+    specializationImage?: string;
 }

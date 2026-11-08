@@ -2,6 +2,7 @@ import { Select } from "@/shared/ui/select";
 import styles from "./SkillsTab.module.css";
 import { Button } from "@/shared/ui/button";
 import { useSkillsTab } from "../../model/useSkillsTab";
+import { useFormContext } from "react-hook-form";
 
 export const SkillsTab = () => {
   const {
@@ -14,6 +15,7 @@ export const SkillsTab = () => {
     setValue,
     skills
   } = useSkillsTab();
+  const {formState: {isSubmitting}} = useFormContext()
 
   return (
     <div className={styles.skills}>
@@ -78,7 +80,11 @@ export const SkillsTab = () => {
           </div>
         </div>
       </div>
-      <Button type="submit" text="Сохранить" className={styles.submitBtn} />
+      <Button 
+        type="submit" 
+        text="Сохранить" 
+        className={styles.submitBtn}
+        disabled={isLoading || isSubmitting} />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import type { UserRoles } from "@/entities";
+
 export type LoginRequest = {
     username: string;
     password: string;
@@ -6,12 +8,6 @@ export type LoginRequest = {
 export type Permissions = {
     id: number;
     name: string;
-}
-
-export type UserRoles = {
-    id: number;
-    name: string; 
-    permission: Permissions[];
 }
 
 export type User = {

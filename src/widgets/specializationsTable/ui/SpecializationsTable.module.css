@@ -1,0 +1,23 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.th {
+    padding: 14px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+    background-color: var(--backgroundGray3);
+    border-radius: 8px;
+}
+
+.trBody {
+    border-bottom: 1px solid var(--border);
+}
+
+.td {
+    padding: 16px 14px;
+}

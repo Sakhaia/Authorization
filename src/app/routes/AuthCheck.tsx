@@ -1,29 +1,29 @@
 import { useGetProfileQuery } from "@/entities";
-import { getAccessToken } from "@/shared/lib";
-import type { ReactNode } from "react";
-import { Navigate } from "react-router-dom";
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { Navigate, Outlet } from "react-router-dom";
 
-type AuthCheckProps = {
-    children: ReactNode;
-}
-
-export const AuthCheck = ({children}: AuthCheckProps) => {
-  const token = getAccessToken();
-  const {isLoading, isError} = useGetProfileQuery(undefined, {
-    skip: !token,
-  });
-
-  if (!token) {
-    return <Navigate to="/login" replace/>
-  }
+export const AuthCheck = () => {
+  const {isLoading, isError, error, refetch} = useGetProfileQuery(undefined);
 
   if (isLoading) {
     return <div>Загрузка ...</div>;
   }
 
   if (isError) {
-    return <Navigate to="/login" replace />
+    const status = (error as FetchBaseQueryError)?.status;
+
+    if (status === 401 || status === 403) {
+      return <Navigate to="/login" replace />
+    }
+
+    return (
+    <div>
+      <h2>Сервер временно недоступен</h2>
+      <p>Попробуйте позже</p>
+      <button onClick={() => refetch()}>Повторить запрос</button>
+    </div>
+  )
   }
 
-  return children;
+  return <Outlet/>;
 }

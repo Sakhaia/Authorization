@@ -14,7 +14,7 @@ export const ForgotPasswordPage = () => {
       onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       isLoading={isLoading}
-      error={error ? 'Превышен лимит' : undefined}
+      error={error || undefined}
       btnName='Отправить'>
         <div className={styles.content}>
           <p className={styles.description}>Для восстановления пароля введите адрес эл.почты, 
@@ -27,7 +27,12 @@ export const ForgotPasswordPage = () => {
           label='Электронная почта'
           placeholder='Введите электронную почту'
           error={errors.email?.message}
-          {...register('email')}/>
+          {...register('email', {
+            required: 'Введите email',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Введите корректный email'}
+          })}/>
         </div>
       </AuthForm>
       
@@ -39,6 +44,7 @@ export const ForgotPasswordPage = () => {
       {isModalOpen &&<ResetPasswordModal
         onClose={closeModal}
         onResend={resend}
+        isLoading={isLoading}
       />}
     </div>
   )

@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    width: 246px;
+    gap: 120px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}

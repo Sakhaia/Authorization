@@ -1,12 +1,15 @@
 import { SidebarItem } from './SidebarItem';
 import styles from './SidebarNav.module.css';
-import { study, homeB, home, profileB, profile, blogB, mentorsB, dbB, analyticsB, analytics} from '../assets';
+import { study, homeB, home, profileB, profile, blogB, mentorsB, dbB, analyticsB, analytics, spec} from '../assets';
+import { useGetProfileQuery } from '@/entities';
 
 type SidebarNavProps = {
   isCollapsed: boolean;
 }
 
 export const SidebarNav = ({isCollapsed}: SidebarNavProps) => {
+  const {data: user} = useGetProfileQuery();
+  const isAdmin = user?.userRoles.some(role => role.name.toLowerCase() === 'admin');
   return (
     <div className={styles.nav}>
         <SidebarItem
@@ -24,6 +27,15 @@ export const SidebarNav = ({isCollapsed}: SidebarNavProps) => {
         to='profile'
         isCollapsed={isCollapsed}
         />
+
+        {isAdmin && 
+        (<SidebarItem
+        icon={profileB}
+        iconActive={spec}
+        label='Специализации'
+        to='specializations'
+        isCollapsed={isCollapsed}
+        />)}
 
         <div className={styles.board}/>
         

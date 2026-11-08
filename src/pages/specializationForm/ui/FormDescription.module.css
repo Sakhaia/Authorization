@@ -1,0 +1,46 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.info p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorBlack3);
+}
+
+.wrapperTexarea {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.textarea {
+    padding: 16px;
+    resize: vertical;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.charCount {
+    position: absolute;
+    pointer-events: none;
+    bottom: 16px;
+    right: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--textColorGray2);
+}

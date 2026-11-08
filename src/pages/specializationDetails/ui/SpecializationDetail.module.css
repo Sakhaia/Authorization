@@ -1,0 +1,13 @@
+.specialization {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.group {
+    display: flex;
+    gap: 20px;
+}
+
+
+

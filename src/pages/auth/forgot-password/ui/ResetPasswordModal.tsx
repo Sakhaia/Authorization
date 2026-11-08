@@ -5,9 +5,10 @@ import { Button } from '@/shared/ui/button';
 type ResetPasswordModalProps= {
     onClose: () => void;
     onResend: () => void;
+    isLoading?: boolean;
 }
 
-export const ResetPasswordModal = ({onClose, onResend}: ResetPasswordModalProps) => {
+export const ResetPasswordModal = ({onClose, onResend, isLoading}: ResetPasswordModalProps) => {
   return (
     <div className={styles.overlay}>
         <div className={styles.wrapper}>
@@ -30,7 +31,8 @@ export const ResetPasswordModal = ({onClose, onResend}: ResetPasswordModalProps)
                     type='button'
                     onClick={onResend}
                     className={styles.sendAgain}
-                    text='Отправить повторно'
+                    text={isLoading ? 'Отправка...' : 'Отправить повторно'}
+                    disabled={isLoading}
                 />
             </div>
         </div>
